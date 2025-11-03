@@ -4,16 +4,14 @@
 char* LoadString(int N) {
     char *str = (char*) malloc((N + 1) * sizeof(char));
     if (str == NULL) {
-        printf("Error: Memory allocation failed.
-");
+        printf("Error: Memory allocation failed.");
         exit(1);
     }
     printf("Enter a string (max %d characters): ", N);
     fgets(str, N + 1, stdin);
     for (int i = 0; str[i]; i++) {
-        if (str[i] == '
-') {
-            str[i] = '';
+        if (str[i] == '\0') {
+            str[i] = '\0';
             break;
         }
     }
@@ -22,42 +20,41 @@ char* LoadString(int N) {
 
 int StringLength(char *str) {
     int len = 0;
-    while (str[len] != '') len++;
+    while (str[len] != '\0') len++;
     return len;
 }
 
 void LoadArray(char *p, char arr[]) {
     int i = 0;
-    while (p[i] != '') {
+    while (p[i] != '\0') {
         arr[i] = p[i];
         i++;
     }
-    arr[i] = '';
+    arr[i] = '\0';
 }
 
 void ReverseArray(char arr[], char rev[], int n) {
     for (int i = 0; i < n; i++) {
         rev[i] = arr[n - 1 - i];
     }
-    rev[n] = '';
+    rev[n] = '\0';
 }
 
 void DisplayArray(char arr[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%c", arr[i]);
     }
-    printf("
-");
+    printf("");
 }
 
 int SumStringASCII(char *p) {
-    if (*p == '')
+    if (*p == '\0')
         return 0;
-    return (int)(*p) + SumStringASCII(p + 1);
+    return (int)(*p)  + SumStringASCII(p + 1);
 }
 
 void ReverseString(char *start, char *end) {
-    if (start >= end)
+    if (start > end)
         return;
     char temp = *start;
     *start = *end;
@@ -68,26 +65,22 @@ void ReverseString(char *start, char *end) {
 int main() {
     char *str;
     int n;
-    printf("Please enter the maximum size of the string:
-");
+    printf("Please enter the maximum size of the string:");
     scanf("%d", &n);
     getchar();
     str = LoadString(n);
     int len = StringLength(str);
     char arr[len + 1], rev[len + 1];
     LoadArray(str, arr);
-    printf("
-Original array: ");
+    printf("Original array:\n ");
     DisplayArray(arr, len);
     ReverseArray(arr, rev, len);
-    printf("Reversed array: ");
+    printf("Reversed array:\n ");
     DisplayArray(rev, len);
     int sum = SumStringASCII(str);
-    printf("Sum of ASCII values (recursive): %d
-", sum);
+    printf("Sum of ASCII values (recursive): %d", sum);
     ReverseString(str, str + len - 1);
-    printf("String reversed recursively: %s
-", str);
+    printf("String reversed recursively: %s", str);
     free(str);
     return 0;
 }
