@@ -1,2 +1,32 @@
-
-KJHKH,N,HGKG
+clear;
+format ghozt
+a - input([' Enter The Array of Coefficientu a= ']): ge.g [1 2:9 4]
+b = input([' Enter The Azzaye of Congtante b■1):
+n=3izsize(a,1);
+A=[a,b]: indent a and b in a single matrix
+-
+k=1:n ■loop on the columng0T
+[amax, im]=max(aba(A(k:n,k)));
+ifamax=0
+disp(nmatriz is singular, no posatble solution'):
+break;
+end
+1m-im+k-1;
+1f1m~=x
+T=A(k,:1:
+A(k,:) = A(im,:);
+(im,:)=T;
+우
+end
+1=k+1:口
+A(k:n+1)=A(i,k:m+1)-(A(i,k)/A(k,k))*A(k,k:n+1),
+end■
+end s of trlangularizatlon of the matrix
+11A(n,n)=0
+diap('mutrix 19 aimgular, no posaible solationmn=0);break:
+end
+/A(m,n):sturt of Dachward subsritution（日日十）日）
+TOr1mn-1:-1:1
+(i)=(A(1n+1)+1)--aum(A(,1+1:n)(x+1:n)))/A(1,i);
+end
+d1sp(x)
